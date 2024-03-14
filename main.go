@@ -11,7 +11,7 @@ func main() {
 	kubeconfig := "/home/sainath_reddy/.kube/config"
 	
 	// Get the current context
-	context, _ := client.getCurrentContext(kubeconfig)
+	context, _ := client.GetCurrentContext(kubeconfig)
 	// if err != nil {
 	// 	fmt.Println("Error:", err)
 	// }
