@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/saireddyb/kubeide/pkg/client"
 	v1 "k8s.io/api/core/v1"
@@ -13,17 +14,15 @@ import (
 
 func main() {
 	// Sample kubeconfig and context
-	kubeconfig := "/home/sainath_reddy/.kube/config"
-	
+	home, _ := os.UserHomeDir()
+	kubeconfig := filepath.Join(home, ".kube", "config")
+
 	// Get the current context
 	context, err := client.GetCurrentContext(kubeconfig)
 	if err != nil {
 		fmt.Println("Error:", err)
 	}
 	fmt.Println("Current context:", context)
-
-	
-
 
 	clientset, err := client.Create(kubeconfig, context)
 	namespaces, err := ListNamespaces(clientset)
@@ -38,7 +37,6 @@ func main() {
 
 }
 
-
 func ListNamespaces(client kubernetes.Interface) (*v1.NamespaceList, error) {
 	fmt.Println("Get Kubernetes Namespaces")
 	namespaces, err := client.CoreV1().Namespaces().List(context.Background(), metav1.ListOptions{})
@@ -48,4 +46,3 @@ func ListNamespaces(client kubernetes.Interface) (*v1.NamespaceList, error) {
 	}
 	return namespaces, nil
 }
-
