@@ -40,6 +40,7 @@ func CreateHTTPAPIHandler() (http.Handler, error) {
 	apiHandler := &apiHandler{ClientSet: clientset}
 
 	mux.HandleFunc(basePath+"/nodes", apiHandler.GetNodeList)
+	mux.HandleFunc(basePath+"/hello", apiHandler.GetHellos)
 
 	return mux, nil
 }
@@ -54,4 +55,9 @@ func (apiHandle *apiHandler) GetNodeList(w http.ResponseWriter, r *http.Request)
 	// // Write the nodes to the response
 	// apiHandler.writeJSON(w, http.StatusOK, nodes)
 	json.NewEncoder(w).Encode(nodes)
+}
+
+// For /hello path
+func (apiHandle *apiHandler) GetHellos(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("Hello World"))
 }
