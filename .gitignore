@@ -19,3 +19,15 @@
 
 # Go workspace file
 go.work
+
+# Node.js dependencies
+**/node_modules/
+
+# Build directory
+**/build/
+
+# Production
+**/dist/
+
+# Storybook
+**/storybook-static/

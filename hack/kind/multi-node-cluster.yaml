@@ -4,7 +4,6 @@ apiVersion: kind.x-k8s.io/v1alpha4
 name: kd-kind
 nodes: 
 - role: control-plane
-- role: worker
 
 
 # kind create cluster --config hack/kind/multi-node-cluster.yaml
