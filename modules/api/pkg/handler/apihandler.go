@@ -54,7 +54,9 @@ func (apiHandle *apiHandler) GetNodeList(w http.ResponseWriter, r *http.Request)
 
 	// // Write the nodes to the response
 	// apiHandler.writeJSON(w, http.StatusOK, nodes)
+	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(nodes)
+
 }
 
 // For /hello path

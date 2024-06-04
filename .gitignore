@@ -31,3 +31,6 @@ go.work
 
 # Storybook
 **/storybook-static/
+
+**/.tmp
+**/tmp
